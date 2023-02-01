@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -62,6 +63,7 @@ public class LoginTests extends BaseTest {
         String password = faker.internet().password();
         wait.until((ExpectedConditions.urlToBe("https://vue-demo.daniel-avellaneda.com/login")));
         loginPage.login(VALIDEMAIL, password);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div")));
         softAssert.assertTrue(loginPage.getMessage().contains("Wrong password"), "Message for wrong password is not displayed");
         softAssert.assertTrue(loginPage.urlContains("/login"), "URL is not valid");
         softAssert.assertAll();
@@ -74,4 +76,19 @@ public class LoginTests extends BaseTest {
         Assert.assertTrue(homePage.urlContains("/home"));
         homePage.logout();
     }
+
+    @Test
+    public void LogoutValidation(){
+        SoftAssert softAssert = new SoftAssert();
+        loginPage.login(VALIDEMAIL, VALIDPASSWORD);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")));
+        softAssert.assertTrue(homePage.getLogoutButton().isDisplayed(), "Log out button is not displayed");
+        homePage.logout();
+        wait.until(ExpectedConditions.urlToBe("https://vue-demo.daniel-avellaneda.com/login"));
+        softAssert.assertTrue(loginPage.urlContains("/login"), "URL is not valid");
+        driver.get("https://vue-demo.daniel-avellaneda.com/home");
+        softAssert.assertTrue(driver.getCurrentUrl().contains("/login"));
+        softAssert.assertAll();
+    }
+
 }

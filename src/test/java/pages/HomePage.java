@@ -21,7 +21,18 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")
     private WebElement logoutButton;
 
+    @FindBy(xpath = "//*[@id=\"app\"]/div[4]/div/div")
+    private WebElement signUpMessage;
+
     public void logout(){
         logoutButton.click();
+    }
+
+    public WebElement getLogoutButton(){
+        return logoutButton;
+    }
+
+    public WebElement getSignUpMessage() {
+        return signUpMessage;
     }
 }

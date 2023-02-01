@@ -19,7 +19,7 @@ public abstract class BaseTest {
     public void beforeClass(){
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\dell0\\Chrome Driver\\chromedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         faker = new Faker();
     }
 
