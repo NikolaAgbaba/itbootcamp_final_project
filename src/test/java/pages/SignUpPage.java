@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SignUpPage extends BasePage{
-    public SignUpPage(WebDriver driver, WebDriverWait wait, Faker faker){
+public class SignUpPage extends BasePage {
+    public SignUpPage(WebDriver driver, WebDriverWait wait, Faker faker) {
         super(driver, wait, faker);
     }
 
@@ -29,19 +29,19 @@ public class SignUpPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div")
     private WebElement message;
 
-    public WebElement getEmailField(){
+    public WebElement getEmailField() {
         return emailField;
     }
 
-    public WebElement getPasswordField(){
+    public WebElement getPasswordField() {
         return passwordField;
     }
 
-    public WebElement getConfirmPasswordField(){
+    public WebElement getConfirmPasswordField() {
         return confirmPasswordField;
     }
 
-    public void signUp(String name, String email, String password, String passwordConfirmation){
+    public void signUp(String name, String email, String password, String passwordConfirmation) {
         nameField.sendKeys(name);
         emailField.sendKeys(email);
         passwordField.sendKeys(password);
@@ -49,7 +49,7 @@ public class SignUpPage extends BasePage{
         signUpButton.click();
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message.getText();
     }
 }

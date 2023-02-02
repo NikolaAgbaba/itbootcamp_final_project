@@ -16,21 +16,21 @@ public abstract class BaseTest {
     protected Faker faker;
 
     @BeforeClass
-    public void beforeClass(){
+    public void beforeClass() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\dell0\\Chrome Driver\\chromedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(25));
         faker = new Faker();
     }
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         driver.navigate().to("https://vue-demo.daniel-avellaneda.com/");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterClass
-    public void afterClass(){
+    public void afterClass() {
         driver.quit();
     }
 }

@@ -78,7 +78,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test
-    public void LogoutValidation(){
+    public void LogoutValidation() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.login(VALIDEMAIL, VALIDPASSWORD);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")));

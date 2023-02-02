@@ -27,16 +27,16 @@ public abstract class BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/a[1]")
     protected WebElement homePageButton;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/a[2]")
+    @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/a[2]")
     protected WebElement aboutPageButton;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/div[1]/div/div/div/div[1]/div/div[3]")
+    @FindBy(xpath = "//*[@id=\"app\"]/div/div/header/div/div[3]/div[1]/div/div/div/div[1]/div/div[3]")
     protected WebElement changeThemeButton;
 
-    @FindBy (xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button")
     protected WebElement changeLanguageButton;
 
-    public boolean urlContains(String urlPart){
+    public boolean urlContains(String urlPart) {
         return driver.getCurrentUrl().contains(urlPart);
     }
 }

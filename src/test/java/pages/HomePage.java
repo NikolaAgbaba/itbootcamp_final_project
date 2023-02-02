@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage extends BasePage {
@@ -24,15 +25,26 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div[4]/div/div")
     private WebElement signUpMessage;
 
-    public void logout(){
+    @FindBy(className = "btnAdminCities")
+    WebElement citiesPageButton;
+
+    @FindBy(id = "list-item-124")
+    WebElement usersPageButton;
+
+    public void logout() {
         logoutButton.click();
     }
 
-    public WebElement getLogoutButton(){
+    public WebElement getLogoutButton() {
         return logoutButton;
     }
 
     public WebElement getSignUpMessage() {
         return signUpMessage;
+    }
+
+    public void goToCitiesPage(){
+        adminPageButton.click();
+        citiesPageButton.click();
     }
 }
