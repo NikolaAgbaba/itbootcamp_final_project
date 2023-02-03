@@ -52,7 +52,7 @@ public class LoginPage extends BasePage {
         loginButton.click();
     }
 
-    public void goToLoginPage(){
+    public void goToLoginPage() {
         loginPageButton.click();
     }
 }

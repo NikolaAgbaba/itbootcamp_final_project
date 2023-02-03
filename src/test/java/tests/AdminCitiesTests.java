@@ -34,7 +34,7 @@ public class AdminCitiesTests extends BaseTest {
         homePage.goToCitiesPage();
     }
 
-    @Test (priority = 1)
+    @Test(priority = 1)
     public void urlAndLogoutValidation() {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(driver.getCurrentUrl().contains("/admin/cities"), "URL is not valid");
@@ -43,7 +43,7 @@ public class AdminCitiesTests extends BaseTest {
         homePage.logout();
     }
 
-    @Test (priority = 2)
+    @Test(priority = 2)
     public void addCityTest() {
         citiesPage.addCity(cityName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
@@ -51,7 +51,7 @@ public class AdminCitiesTests extends BaseTest {
         homePage.logout();
     }
 
-    @Test (priority = 3)
+    @Test(priority = 3)
     public void editCityTest() {
         citiesPage.editCity(cityName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
@@ -59,15 +59,15 @@ public class AdminCitiesTests extends BaseTest {
         homePage.logout();
     }
 
-    @Test (priority = 4)
-    public void searchCityTest(){
+    @Test(priority = 4)
+    public void searchCityTest() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit")));
         Assert.assertTrue(citiesPage.getCities().contains(cityName));
         homePage.logout();
     }
 
-    @Test (priority = 5)
-    public void deleteCityTest(){
+    @Test(priority = 5)
+    public void deleteCityTest() {
         SoftAssert softAssert = new SoftAssert();
         citiesPage.searchCity(cityName);
         wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[1]/div[2]/table/tbody/tr/td[2]"), 1));

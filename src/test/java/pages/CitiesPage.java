@@ -66,17 +66,17 @@ public class CitiesPage extends BasePage {
         return citiesList.size();
     }
 
-    public String getCities(){
+    public String getCities() {
         String citiesNames = "";
-        for (int i = 0; i < citiesNamesList.size(); i++){
+        for (int i = 0; i < citiesNamesList.size(); i++) {
             citiesNames += citiesNamesList.get(i).getText() + "/n";
         }
         return citiesNames;
     }
 
-    public String getFirstCity(){
+    public String getFirstCity() {
         String firstCity = "";
-        for (int i = 0; i < citiesNamesList.size(); i++){
+        for (int i = 0; i < citiesNamesList.size(); i++) {
             firstCity = citiesNamesList.get(0).getText();
         }
         return firstCity;
@@ -103,21 +103,21 @@ public class CitiesPage extends BasePage {
         }
     }
 
-    public void searchCity(String city){
+    public void searchCity(String city) {
         searchField.sendKeys(city);
     }
 
-    public String getTablePagination(){
+    public String getTablePagination() {
         return tablePagination.getText();
     }
 
-    public void deleteCity(){
+    public void deleteCity() {
         deleteButton.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[5]/div/div/div[2]/button[2]")));
         confirmDeleteButton.click();
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message.getText();
     }
 }

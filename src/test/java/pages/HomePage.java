@@ -43,7 +43,7 @@ public class HomePage extends BasePage {
         return signUpMessage;
     }
 
-    public void goToCitiesPage(){
+    public void goToCitiesPage() {
         adminPageButton.click();
         citiesPageButton.click();
     }
