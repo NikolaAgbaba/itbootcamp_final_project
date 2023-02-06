@@ -55,4 +55,8 @@ public class LoginPage extends BasePage {
     public void goToLoginPage() {
         loginPageButton.click();
     }
+
+    public void goToSignupPage(){
+        signUpPageButton.click();
+    }
 }

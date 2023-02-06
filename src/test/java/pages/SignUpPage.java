@@ -1,9 +1,11 @@
 package pages;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SignUpPage extends BasePage {
@@ -29,6 +31,9 @@ public class SignUpPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[3]/div/div/div/div")
     private WebElement message;
 
+    @FindBy(className = "btnClose")
+    private WebElement closeMessageButton;
+
     public WebElement getEmailField() {
         return emailField;
     }
@@ -51,5 +56,10 @@ public class SignUpPage extends BasePage {
 
     public String getMessage() {
         return message.getText();
+    }
+
+    public void closeMessage(){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btnClose")));
+        closeMessageButton.click();
     }
 }

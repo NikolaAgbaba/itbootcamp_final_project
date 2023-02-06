@@ -47,4 +47,8 @@ public class HomePage extends BasePage {
         adminPageButton.click();
         citiesPageButton.click();
     }
+
+    public void goToMyProfile(){
+        myProfilePageButton.click();
+    }
 }
