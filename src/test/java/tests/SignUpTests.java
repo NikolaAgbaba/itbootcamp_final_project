@@ -65,8 +65,7 @@ public class SignUpTests extends BaseTest {
         String password = faker.internet().password();
         String passwordConfirmation = password;
         signUpPage.signUp(name, email, password, passwordConfirmation);
-        wait.until(ExpectedConditions.urlToBe("https://vue-demo.daniel-avellaneda.com/home"));
-        wait.until(ExpectedConditions.elementToBeClickable(homePage.getCloseButton()));
+        wait.until(ExpectedConditions.textToBePresentInElement(homePage.getSignUpMessage(), "IMPORTANT: Verify your account"));
         String singUpMessage = homePage.getSignUpMessage().getText();
         homePage.closeMessage();
         System.out.println(singUpMessage);
