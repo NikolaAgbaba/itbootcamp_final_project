@@ -58,7 +58,7 @@ public class SignUpPage extends BasePage {
         return message.getText();
     }
 
-    public void closeMessage(){
+    public void closeMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btnClose")));
         closeMessageButton.click();
     }

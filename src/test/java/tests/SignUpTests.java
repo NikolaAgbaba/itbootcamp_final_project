@@ -30,11 +30,13 @@ public class SignUpTests extends BaseTest {
         loginPage.goToSignupPage();
     }
 
+    //testing if page url is valid
     @Test
     public void urlValidation() {
         signUpPage.urlContains("/signup");
     }
 
+    //testing if input fields have exact types
     @Test
     public void inputTypesValidation() {
         SoftAssert softAssert = new SoftAssert();
@@ -44,6 +46,7 @@ public class SignUpTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if user can sign up using email that already exists
     @Test
     public void existingUserSignUp() {
         SoftAssert softAssert = new SoftAssert();
@@ -54,6 +57,7 @@ public class SignUpTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing sign up option with valid data
     @Test
     public void newUserSignUp() {
         String name = faker.name().fullName();

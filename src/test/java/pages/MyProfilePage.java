@@ -9,23 +9,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
 
-public class MyProfilePage extends BasePage{
+public class MyProfilePage extends BasePage {
 
-    public MyProfilePage(WebDriver driver, WebDriverWait wait, Faker faker){
+    public MyProfilePage(WebDriver driver, WebDriverWait wait, Faker faker) {
         super(driver, wait, faker);
     }
 
-    @FindBy (id = "name")
+    @FindBy(id = "name")
     private WebElement nameField;
 
-    @FindBy (id = "phone")
+    @FindBy(id = "phone")
     private WebElement phoneField;
 
     @FindBy(id = "city")
     private WebElement cityField;
-
-//    @FindBy(className = "v-select-list")
-//    private WebElement citiesList;
 
     @FindBy(id = "country")
     private WebElement countryField;
@@ -45,7 +42,7 @@ public class MyProfilePage extends BasePage{
     @FindBy(className = "v-list-item__content")
     private List<WebElement> citiesList;
 
-    public void editUser1(String name, String phone, String city, String country, String twitter, String gitHub){
+    public void editUser1(String name, String phone, String city, String country, String twitter, String gitHub) {
         nameField.sendKeys(Keys.CONTROL + "a");
         nameField.sendKeys(Keys.DELETE);
         nameField.sendKeys(name);
@@ -61,52 +58,52 @@ public class MyProfilePage extends BasePage{
         saveButton.click();
     }
 
-    public String getMessage(){
+    public String getMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div")));
         return message.getText();
     }
 
-    public String getNameValue(){
+    public String getNameValue() {
         return nameField.getAttribute("value");
     }
 
-    public String getPhoneValue(){
+    public String getPhoneValue() {
         return phoneField.getAttribute("value");
     }
 
-    public String getCityValue(){
+    public String getCityValue() {
         return cityField.getAttribute("value");
     }
 
-    public String getCountryValue(){
+    public String getCountryValue() {
         return countryField.getAttribute("value");
     }
 
-    public String getTwitterValue(){
+    public String getTwitterValue() {
         return twitterField.getAttribute("value");
     }
 
-    public String getGitHubValue(){
+    public String getGitHubValue() {
         return gitHubField.getAttribute("value");
     }
 
-    public WebElement getNameField(){
+    public WebElement getNameField() {
         return nameField;
     }
 
-    public int getCitiesListNumber(){
+    public int getCitiesListNumber() {
         return citiesList.size();
     }
 
-    public String getFirstCity(){
+    public String getFirstCity() {
         String firstCity = "";
-        for (int i = 0; i < 1; i++){
+        for (int i = 0; i < 1; i++) {
             firstCity = citiesList.get(0).getAttribute("value");
         }
         return firstCity;
     }
 
-    public String getCityFieldValue(){
+    public String getCityFieldValue() {
         return cityField.getAttribute("value");
     }
 }

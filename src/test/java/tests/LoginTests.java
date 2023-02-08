@@ -32,11 +32,13 @@ public class LoginTests extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
+    //testing if page url is valid
     @Test
     public void urlVerify() {
         Assert.assertTrue(loginPage.urlContains("/login"));
     }
 
+    //testing if input fields have exact types
     @Test
     public void inputTypesVerify() {
         SoftAssert softAssert = new SoftAssert();
@@ -45,6 +47,7 @@ public class LoginTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if user can be logged in with invalid username and password
     @Test
     public void invalidEmailAndPasswordLogin() {
         SoftAssert softAssert = new SoftAssert();
@@ -56,6 +59,7 @@ public class LoginTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if user can be logged in with valid username and invalid password
     @Test
     public void validEmailWrongPasswordLogin() {
         SoftAssert softAssert = new SoftAssert();
@@ -68,16 +72,17 @@ public class LoginTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if user can be logged in with valid username and password
     @Test
     public void validDataLogin() {
         loginPage.login(VALIDEMAIL, VALIDPASSWORD);
         wait.until((ExpectedConditions.urlToBe("https://vue-demo.daniel-avellaneda.com/home")));
         Assert.assertTrue(homePage.urlContains("/home"));
-        //homePage.logout();
     }
 
+    //testing if user can log out
     @Test
-    public void LogoutValidation() {
+    public void logoutValidation() {
         SoftAssert softAssert = new SoftAssert();
         loginPage.login(VALIDEMAIL, VALIDPASSWORD);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/div/header/div/div[3]/button[2]")));
@@ -89,5 +94,4 @@ public class LoginTests extends BaseTest {
         softAssert.assertTrue(driver.getCurrentUrl().contains("/login"));
         softAssert.assertAll();
     }
-
 }

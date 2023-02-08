@@ -34,6 +34,7 @@ public class AdminCitiesTests extends BaseTest {
         homePage.goToCitiesPage();
     }
 
+    //testing if cities page has valid url
     @Test(priority = 1)
     public void urlAndLogoutValidation() {
         SoftAssert softAssert = new SoftAssert();
@@ -42,6 +43,7 @@ public class AdminCitiesTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if city can be added
     @Test(priority = 2)
     public void addCityTest() {
         citiesPage.addCity(cityName);
@@ -49,6 +51,7 @@ public class AdminCitiesTests extends BaseTest {
         Assert.assertTrue(citiesPage.getAddedCityMessage().contains("Saved successfully"));
     }
 
+    //testing if city can be edited
     @Test(priority = 3)
     public void editCityTest() {
         citiesPage.editCity(cityName);
@@ -56,12 +59,14 @@ public class AdminCitiesTests extends BaseTest {
         Assert.assertTrue((citiesPage.getAddedCityMessage().contains("Saved successfully")));
     }
 
+    //testing if city can be searched
     @Test(priority = 4)
     public void searchCityTest() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit")));
         Assert.assertTrue(citiesPage.getCities().contains(cityName));
     }
 
+    //testing if city can be deleted
     @Test(priority = 5)
     public void deleteCityTest() {
         SoftAssert softAssert = new SoftAssert();

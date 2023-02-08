@@ -54,6 +54,7 @@ public class ProfileTests extends BaseTest{
         homePage.goToMyProfile();
     }
 
+    //testing if user can edit profile when signed in
     @Test
     public void editProfileTest(){
         SoftAssert softAssert = new SoftAssert();
