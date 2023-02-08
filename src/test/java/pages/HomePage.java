@@ -1,9 +1,11 @@
 package pages;
 
 import com.github.javafaker.Faker;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,10 +28,13 @@ public class HomePage extends BasePage {
     private WebElement signUpMessage;
 
     @FindBy(className = "btnAdminCities")
-    WebElement citiesPageButton;
+    private WebElement citiesPageButton;
 
     @FindBy(id = "list-item-124")
-    WebElement usersPageButton;
+    private WebElement usersPageButton;
+
+    @FindBy(className = "btnClose")
+    private WebElement closeVerifyMessage;
 
     public void logout() {
         logoutButton.click();
@@ -48,7 +53,17 @@ public class HomePage extends BasePage {
         citiesPageButton.click();
     }
 
-    public void goToMyProfile(){
+    public void goToMyProfile() {
         myProfilePageButton.click();
     }
+
+    public void closeMessage() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btnClose")));
+        closeVerifyMessage.click();
+    }
+
+    public WebElement getCloseButton(){
+        return closeVerifyMessage;
+    }
 }
+

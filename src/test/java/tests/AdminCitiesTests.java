@@ -40,7 +40,6 @@ public class AdminCitiesTests extends BaseTest {
         softAssert.assertTrue(driver.getCurrentUrl().contains("/admin/cities"), "URL is not valid");
         softAssert.assertTrue(homePage.getLogoutButton().isDisplayed(), "Logout button is not displayed");
         softAssert.assertAll();
-        homePage.logout();
     }
 
     @Test(priority = 2)
@@ -48,7 +47,6 @@ public class AdminCitiesTests extends BaseTest {
         citiesPage.addCity(cityName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
         Assert.assertTrue(citiesPage.getAddedCityMessage().contains("Saved successfully"));
-        homePage.logout();
     }
 
     @Test(priority = 3)
@@ -56,14 +54,12 @@ public class AdminCitiesTests extends BaseTest {
         citiesPage.editCity(cityName);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
         Assert.assertTrue((citiesPage.getAddedCityMessage().contains("Saved successfully")));
-        homePage.logout();
     }
 
     @Test(priority = 4)
     public void searchCityTest() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("edit")));
         Assert.assertTrue(citiesPage.getCities().contains(cityName));
-        homePage.logout();
     }
 
     @Test(priority = 5)
@@ -74,7 +70,6 @@ public class AdminCitiesTests extends BaseTest {
         citiesPage.deleteCity();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app\"]/div/main/div/div[2]/div/div[3]/div/div/div/div/div[1]")));
         softAssert.assertTrue(citiesPage.getMessage().contains("Deleted successfully"), "Message is not valid");
-        homePage.logout();
     }
 }
 

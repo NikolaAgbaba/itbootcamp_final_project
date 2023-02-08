@@ -1,5 +1,6 @@
 package tests;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -21,6 +22,7 @@ public class ProfileTests extends BaseTest{
     private String passwordConfirmation;
     private String editedName;
     private String editedNumber;
+    private final String EDITEDCITY = "Chicago";
     private String editedCountry;
     private String editedTwitter;
     private String editedGitHub;
@@ -56,12 +58,14 @@ public class ProfileTests extends BaseTest{
     public void editProfileTest(){
         SoftAssert softAssert = new SoftAssert();
         wait.until(ExpectedConditions.attributeToBe(myProfilePage.getNameField(), "value", name));
-        myProfilePage.editUser1(editedName, editedNumber, editedCountry, editedTwitter, editedGitHub);
+        myProfilePage.editUser1(editedName, editedNumber, EDITEDCITY, editedCountry, editedTwitter, editedGitHub);
         softAssert.assertEquals(myProfilePage.getPhoneValue(), editedNumber, "Numbers are not the same");
+        softAssert.assertEquals(myProfilePage.getCityFieldValue(), EDITEDCITY, "Cities are not the same");
         softAssert.assertEquals(myProfilePage.getCountryValue(), editedCountry, "Countries are not the same");
         softAssert.assertEquals(myProfilePage.getTwitterValue(), editedTwitter, "Twitter URL is not the same");
         softAssert.assertEquals(myProfilePage.getGitHubValue(), editedGitHub, "GitHub URL is not the same");
         softAssert.assertEquals(myProfilePage.getNameValue(), editedName, "Names are not the same");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-list-item")));
         softAssert.assertAll();
     }
 }

@@ -52,7 +52,6 @@ public class LoginTests extends BaseTest {
         String password = faker.internet().password();
         loginPage.login(email, password);
         softAssert.assertTrue(loginPage.getMessage().contains("User does not exists"), "Message for invalid user is not displayed");
-        //softAssert.assertTrue(driver.getCurrentUrl().contains("/login"), "URL is not valid");
         softAssert.assertTrue(loginPage.urlContains("/login"), "URL is not valid");
         softAssert.assertAll();
     }
@@ -74,7 +73,7 @@ public class LoginTests extends BaseTest {
         loginPage.login(VALIDEMAIL, VALIDPASSWORD);
         wait.until((ExpectedConditions.urlToBe("https://vue-demo.daniel-avellaneda.com/home")));
         Assert.assertTrue(homePage.urlContains("/home"));
-        homePage.logout();
+        //homePage.logout();
     }
 
     @Test
