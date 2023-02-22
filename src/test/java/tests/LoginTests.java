@@ -47,6 +47,27 @@ public class LoginTests extends BaseTest {
         softAssert.assertAll();
     }
 
+    //testing if user can log in with valid email without providing password
+    @Test
+    public void validEmailWithoutPasswordLogin(){
+        SoftAssert softAssert = new SoftAssert();
+        loginPage.login(VALIDEMAIL, "");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-messages__message")));
+        softAssert.assertTrue(loginPage.getRequiredFieldMessage().contains("This field is required"), "Message is not displayed");
+        softAssert.assertTrue(loginPage.urlContains("/login"), "URL is not valid");
+        softAssert.assertAll();
+    }
+
+    //testing if user can log in with valid password without providing email
+    @Test
+    public void validPasswordWithoutEmailLogin(){
+        SoftAssert softAssert = new SoftAssert();
+        loginPage.login("", VALIDPASSWORD);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("v-messages__message")));
+        softAssert.assertTrue(loginPage.getRequiredFieldMessage().contains("This field is required"), "Message is not displayed");
+        softAssert.assertTrue(loginPage.urlContains("/login"), "URL is not valid");
+    }
+
     //testing if user can be logged in with invalid username and password
     @Test
     public void invalidEmailAndPasswordLogin() {

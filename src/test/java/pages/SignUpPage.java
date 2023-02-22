@@ -34,6 +34,9 @@ public class SignUpPage extends BasePage {
     @FindBy(className = "btnClose")
     private WebElement closeMessageButton;
 
+    @FindBy(className = "v-messages__message")
+    private WebElement requiredFieldMessage;
+
     public WebElement getEmailField() {
         return emailField;
     }
@@ -61,5 +64,9 @@ public class SignUpPage extends BasePage {
     public void closeMessage() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("btnClose")));
         closeMessageButton.click();
+    }
+
+    public String getRequiredFieldMessage(){
+        return requiredFieldMessage.getText();
     }
 }

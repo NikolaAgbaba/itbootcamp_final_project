@@ -32,6 +32,10 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/main/div/div[2]/div/div/div[4]/div/div/div/div")
     private WebElement message;
 
+    @FindBy(className = "v-messages__message")
+    private WebElement requiredFieldMessage;
+
+
     public WebElement getEmailField() {
         return emailField;
     }
@@ -58,5 +62,9 @@ public class LoginPage extends BasePage {
 
     public void goToSignupPage() {
         signUpPageButton.click();
+    }
+
+    public String getRequiredFieldMessage(){
+        return requiredFieldMessage.getText();
     }
 }
